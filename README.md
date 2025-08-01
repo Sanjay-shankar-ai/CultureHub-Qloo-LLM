@@ -2,9 +2,6 @@
 
 CultureHub is a Streamlit web application developed for the **Qloo LLM Hackathon** (August 1, 2025). It delivers personalized, privacy-first cultural insights using **Qloo’s Taste AI™** and **Google Gemini (gemini-2.5-pro)**. Users select a use case (e.g., Plan a Trip, Discover Content) and input preferences (e.g., “I love jazz and Italian food, plan a trip to New Orleans”) to receive tailored outputs like travel itineraries, lifestyle recommendations, or audience profiles.
 
-<p align="center">
-  <img src="https://via.placeholder.com/600x300.png?text=CultureHub+Demo" alt="CultureHub Demo" width="600"/>
-</p>
 
 ## Features
 
@@ -33,7 +30,6 @@ CultureHub is a Streamlit web application developed for the **Qloo LLM Hackathon
 - [Google Gemini API key](https://makersuite.google.com/)
 - [Qloo API key](https://hackathon.qloo.com/) (provided by hackathon organizers)
 - GitHub repository for deployment
-- [Streamlit Cloud](https://streamlit.io/cloud) account (optional for hosting)
 
 ## Installation
 
@@ -82,86 +78,7 @@ CultureHub is a Streamlit web application developed for the **Qloo LLM Hackathon
    - **Research Cultural Trends**: “What are trending music genres in Miami?”
      - **Expected**: List of trends (e.g., Latin Pop, Hip-Hop).
 
-## Deployment to Streamlit Cloud
 
-1. **Push to GitHub**:
-   ```bash
-   git add .
-   git commit -m "CultureHub for Qloo LLM Hackathon"
-   git push origin main
-   ```
-
-2. **Deploy on Streamlit Cloud**:
-   - Log in to [Streamlit Cloud](https://streamlit.io/cloud).
-   - Create a new app, linking to your GitHub repository.
-   - Set environment variables in Streamlit Cloud:
-     ```bash
-     GEMINI_API_KEY=your-gemini-api-key
-     QLOO_API_KEY=your-qloo-api-key
-     ```
-
-3. Access the deployed app via the provided URL.
-
-## Troubleshooting
-
-- **Qloo API 403 Forbidden**:
-  - Verify the API key in `.env`.
-  - Test the key:
-    ```python
-    import requests
-    headers = {"X-Api-Key": "your-qloo-api-key"}
-    params = {"filter.type": "urn:entity:place", "filter.location.query": "New York City", "signal.interests.tags": "restaurant"}
-    response = requests.get("https://hackathon.api.qloo.com/v2/insights/", headers=headers, params=params)
-    print(response.status_code, response.json())
-    ```
-  - If 403 persists, contact Qloo support via [Discord/Devpost](https://hackathon.qloo.com/): “I’m getting a 403 Forbidden error with the API key on /v2/insights/. Can you confirm the key or endpoint?”
-- **Gemini JSON Parsing Errors**:
-  - Enable debug logging by uncommenting `st.write(response.text)` before `json.loads` in `app.py`.
-  - Check for malformed JSON in Gemini responses.
-- **General Issues**:
-  - Uncomment `st.write` for the Qloo API URL in `query_qloo` to debug requests.
-  - Share error logs with hackathon mentors or via GitHub Issues.
-
-## Project Structure
-
-```
-culturehub/
-├── app.py          # Main Streamlit application
-├── .env            # Environment variables (not committed)
-├── requirements.txt # Dependencies
-└── README.md       # This file
-```
-
-**Create `requirements.txt`**:
-```bash
-echo -e "streamlit\ngoogle-generativeai\nrequests\npython-dotenv" > requirements.txt
-```
-
-## Hackathon Context
-
-CultureHub was built for the **Qloo LLM Hackathon** (August 1, 2025) to showcase Qloo’s Taste AI for culturally intelligent recommendations. It integrates Qloo’s Insights API with Google Gemini to deliver privacy-first insights across six use cases, emphasizing scalability and user engagement.
-
-## Limitations
-
-- **Qloo API Access**: 403 errors may occur due to key restrictions. Fallback data is used when needed.
-- **Gemini Response Variability**: JSON parsing may fail if Gemini’s output deviates. Robust error handling mitigates this.
-- **Category Support**: Limited to Qloo’s supported entity types (e.g., `urn:entity:artist` for music, not albums/songs directly).
-
-## Future Improvements
-
-- **Dynamic Intent Detection**: Remove sidebar use case selection for fully natural language input processing.
-- **Expanded Qloo Support**: Incorporate additional Qloo categories (e.g., albums, songs) if API endpoints expand.
-- **Performance Optimization**: Add token counting for Gemini API to manage request limits.
-
-## License
-
-MIT License. See [LICENSE](LICENSE) for details.
-
-## Contact
-
-For issues, open a [GitHub Issue](https://github.com/your-username/culturehub/issues) or contact via the Qloo LLM Hackathon [Discord/Devpost](https://hackathon.qloo.com/).
-
----
 
 <p align="center">
   Built for the Qloo LLM Hackathon. Powered by Qloo's Taste AI™ and Google Gemini.
