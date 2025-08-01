@@ -72,7 +72,7 @@ def query_qloo(params, retry=False):
     
     try:
         #st.write(f"Qloo API URL: {requests.Request('GET', QLOO_API_URL, headers=QLOO_HEADERS, params=params).prepare().url}")
-        response = requests.get(QLOO_API_URL, headers=QLOO_HEADERS, params=params, timeout=50)
+        response = requests.get(QLOO_API_URL, headers=QLOO_HEADERS, params=params, timeout=120)
         response.raise_for_status()
         data = response.json()
         return data.get("results", [])
