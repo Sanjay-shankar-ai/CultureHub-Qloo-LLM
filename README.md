@@ -2,15 +2,15 @@
 CultureHub is a Streamlit web application built for the Qloo LLM Hackathon, delivering personalized, privacy-first cultural insights using Qloo’s Taste AI™ and Google Gemini (gemini-2.5-pro). Users select a use case (e.g., Plan a Trip, Discover Content) and input preferences (e.g., “I love jazz and Italian food, plan a trip to New Orleans”) to receive tailored recommendations, such as travel itineraries, lifestyle suggestions, or audience profiles.
 
 
-#Features
-
+# Features
+```
 Six Use Cases: Supports Plan a Trip, Lifestyle Recommendations, Discover Content, Predict Audience, Personalize a Product, and Research Cultural Trends.
 Qloo Taste AI Integration: Queries Qloo’s Insights API for culturally relevant recommendations across music (artists), dining (restaurants, cafes), television (TV series, presenters), sports (athletes, stadiums), products (brands), and books (authors, books).
 Google Gemini Powered: Uses gemini-2.5-pro to parse user inputs, build Qloo queries, and generate engaging responses.
 Privacy-First: Emphasizes Qloo’s ethical, no-personal-data-required approach.
 Polished UI: Streamlit interface with collapsible itineraries for travel plans and clear affinity score displays (>80 very high, 60-80 high, <50 low).
 Error Handling: Manages Qloo API 403 errors with retries and fallbacks, and robust JSON parsing to avoid ValueError.
-
+```
 
 # Installation
 
